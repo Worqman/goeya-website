@@ -65,7 +65,7 @@ export default function PricingOffer() {
             </div>
 
             <a
-              href="#get-lifetime-deal"
+              href="https://buy.stripe.com/5kQ5kDeZJ48U5KfapcfQI05"
               className="mt-6 flex w-full items-center justify-center gap-2 rounded-[8px] bg-brand px-5 py-[14px] text-[15px] font-semibold text-white transition-colors hover:bg-brand-hover"
             >
               Get Lifetime Deal

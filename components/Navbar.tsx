@@ -76,8 +76,7 @@ export default function Navbar() {
             Sign in
           </a>
           <a
-            href="#pricing"
-            onClick={(event) => handleHashClick(event, "#pricing")}
+            href="https://buy.stripe.com/5kQ5kDeZJ48U5KfapcfQI05"
             className="inline-flex items-center gap-1.5 rounded-[8px] bg-brand px-[18px] py-2 text-[13.5px] font-semibold text-white transition-colors hover:bg-brand-hover"
           >
             Get Lifetime Deal
@@ -117,8 +116,7 @@ export default function Navbar() {
               Sign in
             </a>
             <a
-              href="#pricing"
-              onClick={(event) => handleHashClick(event, "#pricing")}
+              href="https://buy.stripe.com/5kQ5kDeZJ48U5KfapcfQI05"
               className="mt-1 inline-flex items-center justify-center gap-1.5 rounded-[8px] bg-brand px-5 py-2.5 text-sm font-semibold text-white"
             >
               Get Lifetime Deal

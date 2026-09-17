@@ -51,7 +51,7 @@ export default function Hero() {
 
           <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
             <a
-              href="#pricing"
+              href="https://buy.stripe.com/5kQ5kDeZJ48U5KfapcfQI05"
               className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-brand px-6 py-[13px] text-[15px] font-semibold text-white shadow-[0_8px_24px_rgba(139,92,246,0.28)] transition-colors hover:bg-brand-hover"
             >
               Get Lifetime Deal
