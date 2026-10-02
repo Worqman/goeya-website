@@ -58,11 +58,11 @@ export default function Hero() {
               <ArrowIcon />
             </a>
             <a
-              href="#demo"
+              href="/demo"
               className="inline-flex items-center justify-center gap-2.5 rounded-[8px] border border-white/12 bg-[#0C0C16] px-5 py-[13px] text-[15px] font-semibold text-white transition-colors hover:border-white/20 hover:bg-surface"
             >
               <PlayIcon />
-              Watch Demo
+              Book a Demo
             </a>
           </div>
 
