@@ -1,17 +1,22 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#features", label: "Features" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#how-it-works", label: "How It Works" },
+  { href: "/#features", label: "Features" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
+function hashOf(href: string) {
+  return href.slice(href.indexOf("#"));
+}
+
 function scrollToHash(href: string) {
-  const id = href.replace("#", "");
-  const target = document.getElementById(id);
+  const target = document.getElementById(hashOf(href).slice(1));
   if (!target) return;
   target.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -19,6 +24,7 @@ function scrollToHash(href: string) {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pendingHashRef = useRef<string | null>(null);
+  const isHome = usePathname() === "/";
 
   useLayoutEffect(() => {
     if (open) return;
@@ -28,14 +34,15 @@ export default function Navbar() {
     pendingHashRef.current = null;
 
     scrollToHash(href);
-    window.history.replaceState(null, "", href);
+    window.history.replaceState(null, "", hashOf(href));
   }, [open]);
 
   function handleHashClick(
     event: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) {
-    if (!href.startsWith("#")) return;
+    // Off the homepage, let <Link> navigate to "/#section" instead.
+    if (!isHome) return;
     event.preventDefault();
 
     if (open) {
@@ -45,26 +52,38 @@ export default function Navbar() {
     }
 
     scrollToHash(href);
-    window.history.replaceState(null, "", href);
+    window.history.replaceState(null, "", hashOf(href));
+  }
+
+  function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    if (!isHome) return;
+    event.preventDefault();
+    setOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.history.replaceState(null, "", "/");
   }
 
   return (
     <header className="relative z-50 border-b border-[#26263A] bg-page/80 backdrop-blur-md">
       <div className="mx-auto flex h-[72px] max-w-[1340px] items-center justify-between px-6 lg:px-8">
-        <a href="#" className="relative z-10 text-[22px] font-bold tracking-tight text-white">
+        <Link
+          href="/"
+          onClick={handleLogoClick}
+          className="relative z-10 text-[22px] font-bold tracking-tight text-white"
+        >
           eya
-        </a>
+        </Link>
 
         <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-9 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               onClick={(event) => handleHashClick(event, link.href)}
               className="text-[14px] font-medium text-white/70 transition-colors hover:text-white"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -99,14 +118,14 @@ export default function Navbar() {
         <div className="border-t border-white/[0.06] bg-page px-6 py-5 md:hidden">
           <nav className="flex flex-col gap-4">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={(event) => handleHashClick(event, link.href)}
                 className="text-[15px] font-medium text-white/80"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <a
               href="https://my.goeya.app/login"

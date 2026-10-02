@@ -1,12 +1,14 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="border-t border-[#26263A]">
       <div className="mx-auto max-w-[1340px] px-6 py-8 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-3">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <a href="#" className="text-[20px] font-bold tracking-tight text-white">
+            <Link href="/" className="text-[20px] font-bold tracking-tight text-white">
               eya
-            </a>
+            </Link>
             <p className="text-[13px] text-white/40">
               More conversations. More opportunities.
             </p>
