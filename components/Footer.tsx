@@ -15,15 +15,12 @@ export default function Footer() {
           </div>
 
           <nav className="flex items-center gap-6 sm:justify-center">
-            <a href="#terms" className="text-[13px] text-white/45 transition-colors hover:text-white">
+            <Link href="/terms" className="text-[13px] text-white/45 transition-colors hover:text-white">
               Terms
-            </a>
-            <a href="#privacy" className="text-[13px] text-white/45 transition-colors hover:text-white">
+            </Link>
+            <Link href="/privacy" className="text-[13px] text-white/45 transition-colors hover:text-white">
               Privacy
-            </a>
-            <a href="#contact" className="text-[13px] text-white/45 transition-colors hover:text-white">
-              Contact
-            </a>
+            </Link>
           </nav>
 
           <div className="flex items-center gap-4 sm:justify-end">
